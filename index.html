@@ -6,23 +6,46 @@
         <title>Javascript Library</title>
     </head>
     <body>
-        <table class="table">
-            <thead>
-                <tr>
-                    <th>No.</th>
-                    <th>Title</th>
-                    <th>Author</th>
-                    <th>Read</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>1</td>
-                    <td>Jaraed</td>
-                    <td>Mammad</td>
-                    <td>Yes</td>
-                </tr>
-            </tbody>
-        </table>
+        <div class="container">
+            <div class="form-container">
+                <form class="form">
+                    <label for="input1">Book's Name
+                        <input id=input1 type="text">
+                    </label>
+                    <label for="input2">Author's Name
+                        <input id=input2 type="text">
+                    </label>
+                    <label for="input3">Total Pages                    
+                        <input id=input3 type="number">
+                    </label>
+                    <label for="input4">Read or not:
+                        <input id=input4 type="text">
+                    </label>    
+                    <button type="submit">Add</button>
+                </form>
+            </div>
+            <div class="table-container">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>No.</th>
+                            <th>Title</th>
+                            <th>Author</th>
+                            <th>Read</th>
+                            <th>Delete</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1</td>
+                            <td>Jaraed</td>
+                            <td>Mammad</td>
+                            <td>Yes</td>
+                            <td><button class="delete">Delete</button></td>
+                        </tr>
+                    </tbody>
+                </table>    
+            </div>
+        </div>
     </body>
 </html>
