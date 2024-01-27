@@ -8,18 +8,26 @@
     <body>
         <div class="container">
             <div class="form-container">
-                <form class="form">
+                <form class="form" novalidate>
                     <label for="input1">Book's Name
-                        <input id=input1 type="text">
+                        <input id=input1 type="text" name="book-name" required>
+                        <span class="error" aria-live="polite"></span>
                     </label>
                     <label for="input2">Author's Name
-                        <input id=input2 type="text">
+                        <input id=input2 type="text" name="author-name" required>
+                        <span class="error" aria-live="polite"></span>
                     </label>
-                    <label for="input3">Total Pages                    
-                        <input id=input3 type="number">
+                    <label for="input3">Year Published
+                        <input id=input3 type="number" name="year" required>
+                        <span class="error" aria-live="polite"></span>
                     </label>
-                    <label for="input4">Read or not:
-                        <input id=input4 type="text">
+                    <label for="input4">Total Pages                    
+                        <input id=input4 type="number" name="pages" required>
+                        <span class="error" aria-live="polite"></span>
+                    </label>
+                    <label for="input5">Read or not:
+                        <input id=input5 type="text" name="read-or-not" required>
+                        <span class="error" aria-live="polite"></span>
                     </label>    
                     <button type="submit">Add</button>
                 </form>
