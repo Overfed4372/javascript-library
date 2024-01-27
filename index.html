@@ -26,7 +26,7 @@
                         <span class="error" aria-live="polite"></span>
                     </label>
                     <label for="input5">Read or not:
-                        <input id=input5 type="text" name="read-or-not" required>
+                        <input id=input5 type="checkbox" name="read-or-not" required>
                         <span class="error" aria-live="polite"></span>
                     </label>    
                     <button type="submit">Add</button>
@@ -39,7 +39,9 @@
                             <th>No.</th>
                             <th>Title</th>
                             <th>Author</th>
-                            <th>Read</th>
+                            <th>Year Published</th>
+                            <th>Total Pages</th>
+                            <th>Is read</th>
                             <th>Delete</th>
                         </tr>
                     </thead>
@@ -48,7 +50,10 @@
                             <td>1</td>
                             <td>Jaraed</td>
                             <td>Mammad</td>
-                            <td>Yes</td>
+                            <td>1984</td>
+                            <td>134</td>
+                            <!-- <td>No</td> -->
+                            <td><input type="checkbox"></td>
                             <td><button class="delete">Delete</button></td>
                         </tr>
                     </tbody>

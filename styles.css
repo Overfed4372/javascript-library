@@ -47,13 +47,16 @@ body {
     > label {
         margin: 10px 5px;
         display: grid;
-        grid-template: auto / 1fr minmax(auto-f);
+        grid-template: auto / 1fr minmax(auto,1fr);
         > input {
             padding: 0.5rem;
             /* width: clamp(15vw,40vw,40vw); */
             border-radius: 1rem;
             border: 0px;
             background-color: #eeeeeec6;
+        }
+        > input[type="checkbox"] {
+            transform: scale(1.5);
         }
     }
     > button[type="submit"] {
