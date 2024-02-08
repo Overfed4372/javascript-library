@@ -1,3 +1,69 @@
+class Library {
+    constructor (){
+        this.library = [];
+    }
+    addBookToLibrary ({number, name,author,year,pages,isRead}) {
+        this.library.push({number, name, author, year, pages, isRead});
+    }
+    removeBookFromLibrary (number) {
+        this.library.splice(number-1, 1);
+        this.#updateBookNumbers();
+    }
+    #updateBookNumbers () {
+        this.library.forEach ( (book, index) => {
+            book.number = index+1;
+        } )
+    }
+    get getLibrary() {
+        return this.library;
+    }
+}
+class Table {
+    constructor (libraryObject) {
+        this.libraryObject=libraryObject;
+    }
+    #setTable () {
+        const tableNode = document.querySelector(".table");
+        const tbodyNode = tableNode.querySelector("tbody");
+        const library = this.libraryObject.getLibrary;
+        tbodyNode.innerHTML='';
+        library.forEach ( (bookRowObject , index) => {
+            let row = tbodyNode.insertRow(-1);
+            bookRowObject.number = index+1;
+
+            [bookRowObject.number, bookRowObject.name, bookRowObject.author ,
+            bookRowObject.year, bookRowObject.pages] .forEach ( (field, index) => {
+                    let cell = row.insertCell(index);
+                    cell.innerHTML = field;
+                } )
+            let cell = row.insertCell(-1);
+            cell.innerHTML = '<input type="checkbox">';
+
+            const deletCell = row.insertCell(-1);
+            deletCell.innerHTML = '<button class="delete">Delete</button>';
+            console.log("update table function");
+        })
+    }
+    #setDeleteButtonsFunctionality () {
+        const deleteButtons = document.querySelectorAll(".table tbody button[class='delete']");
+        const isReadCheckButtons = document.querySelectorAll(".table tbody input[type='checkbox']");
+        deleteButtons.forEach ( (button) => {
+            button.addEventListener ("click", (event) => {
+                const rowNumber = event.target.parentNode.parentNode.rowIndex;
+                console.log(rowNumber);
+                this.libraryObject.removeBookFromLibrary(rowNumber);
+                this.#setTable();
+                console.log(this.libraryObject);
+        })
+        })
+    }
+    updateTable () {
+        this.#setTable();
+        this.#setDeleteButtonsFunctionality();
+    }
+}
+
+
 function doAllTheWork () {
     const myLibrary = [{number:1, name:"Jaraed", author:"Mammad", year: 1984, pages: 134, isRead: true}];
     function addBookToLibrary(bookName, bookAuthor, bookYear, bookPages, bookIsRead) {
@@ -102,7 +168,7 @@ function doAllTheWork () {
                 if (type !== "read-or-not" && !input.validity.valid) {
                     isThereError = true;
                     showError(input, type);
-                   
+
                     event.preventDefault();
                 }
             });
