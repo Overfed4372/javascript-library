@@ -1,11 +1,12 @@
 class Library {
     constructor (){
         this.library = [];
+        this.#setInitialLibrary();
     }
-    addBookToLibrary ({number, name,author,year,pages,isRead}) {
+    addBook ({number, name,author,year,pages,isRead}) {
         this.library.push({number, name, author, year, pages, isRead});
     }
-    removeBookFromLibrary (number) {
+    removeBook (number) {
         this.library.splice(number-1, 1);
         this.#updateBookNumbers();
     }
@@ -13,6 +14,9 @@ class Library {
         this.library.forEach ( (book, index) => {
             book.number = index+1;
         } )
+    }
+    #setInitialLibrary () {
+        this.library.push({number:1, name:"Jaraed", author:"Mammad", year: 1984, pages: 134, isRead: true});
     }
     get getLibrary() {
         return this.library;
@@ -22,7 +26,7 @@ class Table {
     constructor (libraryObject) {
         this.libraryObject=libraryObject;
     }
-    #setTable () {
+    update () {
         const tableNode = document.querySelector(".table");
         const tbodyNode = tableNode.querySelector("tbody");
         const library = this.libraryObject.getLibrary;
@@ -43,6 +47,7 @@ class Table {
             deletCell.innerHTML = '<button class="delete">Delete</button>';
             console.log("update table function");
         })
+        this.#setDeleteButtonsFunctionality();
     }
     #setDeleteButtonsFunctionality () {
         const deleteButtons = document.querySelectorAll(".table tbody button[class='delete']");
@@ -52,14 +57,10 @@ class Table {
                 const rowNumber = event.target.parentNode.parentNode.rowIndex;
                 console.log(rowNumber);
                 this.libraryObject.removeBookFromLibrary(rowNumber);
-                this.#setTable();
+                this.update();
                 console.log(this.libraryObject);
         })
         })
-    }
-    updateTable () {
-        this.#setTable();
-        this.#setDeleteButtonsFunctionality();
     }
 }
 
@@ -119,7 +120,7 @@ function doAllTheWork () {
         })
         addRemoveToggleBooksFunction();
     }
-    function addRemoveToggleBooksFunction () {
+    function addRemoveToggleBooksFunction () {  
         const deleteButtons = document.querySelectorAll(".table tbody button[class='delete']");
         const isReadCheckButtons = document.querySelectorAll(".table tbody input[type='checkbox']");
         deleteButtons.forEach ( (button) => {
@@ -198,4 +199,5 @@ function doAllTheWork () {
     }
     addRemoveToggleBooksFunction();
     checkForm();
-}doAllTheWork();
+}
+// doAllTheWork();
