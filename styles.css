@@ -5,9 +5,9 @@ body {
 
 .container {
     display: grid;
-    grid-template: auto / minmax(20px,3fr) minmax(20px,5fr);
+    grid-template: minmax(100vh,1fr) / minmax(20px,3fr) minmax(20px,5fr);
     grid-template-areas: "sidebar table";
-    column-gap: calc(10vw + 20px);
+    column-gap: calc(4vw + 10px);
 }
 
 .table-container {
@@ -44,10 +44,11 @@ body {
     color: white;
     font-size: 1.5rem;
     font-weight: bolder;
+    display: grid;
     > label {
         margin: 10px 5px;
         display: grid;
-        grid-template: auto / 1fr minmax(auto,1fr);
+        grid-template: auto / minmax(100px,1fr);
         > input {
             padding: 0.5rem;
             /* width: clamp(15vw,40vw,40vw); */
